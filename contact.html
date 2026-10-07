@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="The Coffee Grove — an editorial coffee estate and farm-to-cup experience in the Western Ghats.">
+    <title>Visit The Grove | The Coffee Grove</title>
+    <link rel="stylesheet" href="css/style.css">
+    
+</head>
+<body>
+<div class="announcement">SMALL-BATCH COFFEE · GROWN WITH PATIENCE · ROASTED WITH CARE</div>
+<header class="site-header" id="siteHeader">
+    <a class="brand" href="index.html" aria-label="The Coffee Grove home">
+        <span class="brand-symbol">G</span>
+        <span class="brand-text">
+            <strong>THE COFFEE GROVE</strong>
+            <small>ESTATE · WESTERN GHATS</small>
+        </span>
+    </a>
+
+    <nav class="desktop-nav" aria-label="Primary navigation">
+        <a href="index.html">Home</a>
+        <a href="estate.html">Estate</a>
+        <a href="shop.html">Coffee</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="contact.html">Visit</a>
+    </nav>
+
+    <div class="header-actions">
+        <button class="basket-button" type="button" data-cart-open>
+            Basket <span class="basket-count" data-cart-count>0</span>
+        </button>
+        <button class="menu-button" type="button" data-menu-open aria-label="Open menu">Menu</button>
+    </div>
+</header>
+
+<div class="mobile-menu" data-mobile-menu>
+    <div class="mobile-menu-top">
+        <span>MENU</span>
+        <button type="button" data-menu-close aria-label="Close menu">×</button>
+    </div>
+    <nav>
+        <a href="index.html">Home <span>01</span></a>
+        <a href="estate.html">Our Estate <span>02</span></a>
+        <a href="shop.html">Coffee Collection <span>03</span></a>
+        <a href="gallery.html">Gallery <span>04</span></a>
+        <a href="contact.html">Visit the Grove <span>05</span></a>
+    </nav>
+    <p>Good coffee begins with good land.</p>
+</div>
+
+<main>
+    <section class="page-hero contact-hero"><div class="page-hero-content reveal"><p class="eyebrow light">COME SAY HELLO</p><h1>Let's talk<br><em>coffee.</em></h1><p>Estate visits, wholesale, gifting or simply a good cup.</p></div></section>
+    <section class="contact-page">
+        <div class="contact-copy reveal"><p class="eyebrow">GET IN TOUCH</p><h2>Good coffee is better when it is shared.</h2><p>Tell us what you are looking for and we will get back to you. This demo form works on the front end and is ready to connect to your preferred email/backend service later.</p><div class="contact-details"><div><span>Email</span><strong>hello@thecoffeegrove.example</strong></div><div><span>Estate</span><strong>Western Ghats, Karnataka, India</strong></div><div><span>Visits</span><strong>By prior enquiry</strong></div></div></div>
+        <form class="contact-form reveal" id="contactForm">
+            <label>Name<input id="name" name="name" type="text" placeholder="Your name" required></label>
+            <label>Email<input name="email" type="email" placeholder="you@example.com" required></label>
+            <label>Enquiry<select name="type"><option>General</option><option>Estate visit</option><option>Wholesale coffee</option><option>Corporate gifting</option></select></label>
+            <label>Message<textarea name="message" rows="6" placeholder="Tell us a little about what you need..." required></textarea></label>
+            <button class="button button-dark" type="submit">Send enquiry</button>
+            <p class="form-message" id="formMessage"></p>
+        </form>
+    </section>
+    <section class="contact-image"><img src="assets/cafe-interior.jpg" alt="Warm coffee interior"><div><p class="eyebrow light">THE GROVE</p><h2>Come slowly.<br><em>Stay awhile.</em></h2></div></section>
+</main>
+<footer class="site-footer">
+    <div class="footer-main">
+        <div class="footer-brand">
+            <div class="brand-symbol">G</div>
+            <h2>The Coffee Grove</h2>
+            <p>A story grown in the Western Ghats.</p>
+        </div>
+        <div class="footer-column">
+            <span class="footer-label">Explore</span>
+            <a href="estate.html">Our Estate</a>
+            <a href="shop.html">Coffee Collection</a>
+            <a href="gallery.html">Gallery</a>
+        </div>
+        <div class="footer-column">
+            <span class="footer-label">Visit</span>
+            <a href="contact.html">Plan a Visit</a>
+            <a href="contact.html">Wholesale</a>
+            <a href="contact.html">Get in touch</a>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <span>© <span class="year">2026</span> The Coffee Grove</span>
+        <span>Grown slowly · Shared generously</span>
+    </div>
+</footer>
+
+<aside class="cart-drawer" data-cart-drawer aria-label="Basket">
+    <div class="cart-head">
+        <div>
+            <span class="eyebrow">YOUR BASKET</span>
+            <h2>A little grove to take home.</h2>
+        </div>
+        <button type="button" data-cart-close aria-label="Close basket">×</button>
+    </div>
+    <div class="cart-items" data-cart-items>
+        <p class="empty-cart">Your basket is waiting for something freshly roasted.</p>
+    </div>
+    <div class="cart-foot">
+        <div class="cart-total-row"><span>Total</span><strong data-cart-total>₹0</strong></div>
+        <a class="button button-dark full" href="contact.html">Continue to enquiry</a>
+    </div>
+</aside>
+<div class="cart-overlay" data-cart-close></div>
+<div class="toast" data-toast></div>
+
+<script src="js/script.js"></script>
+</body>
+</html>

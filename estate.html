@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="The Coffee Grove — an editorial coffee estate and farm-to-cup experience in the Western Ghats.">
+    <title>Our Estate | The Coffee Grove</title>
+    <link rel="stylesheet" href="css/style.css">
+    
+</head>
+<body>
+<div class="announcement">SMALL-BATCH COFFEE · GROWN WITH PATIENCE · ROASTED WITH CARE</div>
+<header class="site-header" id="siteHeader">
+    <a class="brand" href="index.html" aria-label="The Coffee Grove home">
+        <span class="brand-symbol">G</span>
+        <span class="brand-text">
+            <strong>THE COFFEE GROVE</strong>
+            <small>ESTATE · WESTERN GHATS</small>
+        </span>
+    </a>
+
+    <nav class="desktop-nav" aria-label="Primary navigation">
+        <a href="index.html">Home</a>
+        <a href="estate.html">Estate</a>
+        <a href="shop.html">Coffee</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="contact.html">Visit</a>
+    </nav>
+
+    <div class="header-actions">
+        <button class="basket-button" type="button" data-cart-open>
+            Basket <span class="basket-count" data-cart-count>0</span>
+        </button>
+        <button class="menu-button" type="button" data-menu-open aria-label="Open menu">Menu</button>
+    </div>
+</header>
+
+<div class="mobile-menu" data-mobile-menu>
+    <div class="mobile-menu-top">
+        <span>MENU</span>
+        <button type="button" data-menu-close aria-label="Close menu">×</button>
+    </div>
+    <nav>
+        <a href="index.html">Home <span>01</span></a>
+        <a href="estate.html">Our Estate <span>02</span></a>
+        <a href="shop.html">Coffee Collection <span>03</span></a>
+        <a href="gallery.html">Gallery <span>04</span></a>
+        <a href="contact.html">Visit the Grove <span>05</span></a>
+    </nav>
+    <p>Good coffee begins with good land.</p>
+</div>
+
+<main>
+    <section class="page-hero estate-hero">
+        <img src="assets/coffee-bgg.jpg" alt="Coffee plantation in the hills">
+        <div class="page-hero-shade"></div>
+        <div class="page-hero-content reveal"><p class="eyebrow light">THE PLACE BEHIND THE CUP</p><h1>Rooted in<br><em>the hills.</em></h1><p>Our coffee begins in the living landscape of the Western Ghats.</p></div>
+    </section>
+    <section class="editorial two-column-editorial">
+        <div class="reveal"><p class="eyebrow">OUR ESTATE</p><h2>A grove is more than rows of coffee.</h2></div>
+        <div class="reveal"><p class="drop-cap">The coffee plants grow alongside fruit trees, flowering plants and old shade trees. Rain, soil, altitude and patience shape the crop long before roasting begins. Our approach is simple: protect the land, respect the season and let the coffee speak for itself.</p><p>We work in small lots so we can follow each harvest closely — from picking and processing to roasting and packing.</p></div>
+    </section>
+    <section class="image-text-section">
+        <div class="large-image reveal"><img src="assets/coffee-harvest.jpg" alt="Hand harvesting coffee cherries"></div>
+        <div class="image-text-copy reveal"><p class="eyebrow">THE HARVEST</p><h2>Picked when<br><em>it is ready.</em></h2><p>Harvest is a quiet rhythm. Ripe cherries are selected by hand, keeping green and overripe fruit out of the lot. That extra care creates a cleaner, sweeter cup.</p><div class="facts"><div><strong>01</strong><span>Ripe cherries</span></div><div><strong>02</strong><span>Careful processing</span></div><div><strong>03</strong><span>Small-lot roasting</span></div></div></div>
+    </section>
+    <section class="dark-story">
+        <div class="dark-story-copy reveal"><p class="eyebrow light">OUR ROASTING ROOM</p><h2>Roasted to reveal<br><em>the place.</em></h2><p>We roast in small batches and adjust with every season. The aim is not to make every bag taste the same — it is to preserve what makes each harvest interesting.</p></div>
+        <div class="dark-story-image reveal"><img src="assets/roasted-beans.jpg" alt="Fresh coffee beans being roasted"></div>
+    </section>
+    <section class="quote-section"><p class="quote-mark">“</p><blockquote>Slow growing. Careful picking. Honest roasting. That is the whole idea.</blockquote><span>— THE COFFEE GROVE</span></section>
+</main>
+<footer class="site-footer">
+    <div class="footer-main">
+        <div class="footer-brand">
+            <div class="brand-symbol">G</div>
+            <h2>The Coffee Grove</h2>
+            <p>A story grown in the Western Ghats.</p>
+        </div>
+        <div class="footer-column">
+            <span class="footer-label">Explore</span>
+            <a href="estate.html">Our Estate</a>
+            <a href="shop.html">Coffee Collection</a>
+            <a href="gallery.html">Gallery</a>
+        </div>
+        <div class="footer-column">
+            <span class="footer-label">Visit</span>
+            <a href="contact.html">Plan a Visit</a>
+            <a href="contact.html">Wholesale</a>
+            <a href="contact.html">Get in touch</a>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <span>© <span class="year">2026</span> The Coffee Grove</span>
+        <span>Grown slowly · Shared generously</span>
+    </div>
+</footer>
+
+<aside class="cart-drawer" data-cart-drawer aria-label="Basket">
+    <div class="cart-head">
+        <div>
+            <span class="eyebrow">YOUR BASKET</span>
+            <h2>A little grove to take home.</h2>
+        </div>
+        <button type="button" data-cart-close aria-label="Close basket">×</button>
+    </div>
+    <div class="cart-items" data-cart-items>
+        <p class="empty-cart">Your basket is waiting for something freshly roasted.</p>
+    </div>
+    <div class="cart-foot">
+        <div class="cart-total-row"><span>Total</span><strong data-cart-total>₹0</strong></div>
+        <a class="button button-dark full" href="contact.html">Continue to enquiry</a>
+    </div>
+</aside>
+<div class="cart-overlay" data-cart-close></div>
+<div class="toast" data-toast></div>
+
+<script src="js/script.js"></script>
+</body>
+</html>
