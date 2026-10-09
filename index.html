@@ -3,219 +3,334 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="The Coffee Grove — an editorial coffee estate and farm-to-cup experience in the Western Ghats.">
-    <title>The Coffee Grove | Estate Coffee</title>
+    <meta name="description" content="The Coffee Grove — thoughtful estate coffee, grown with care and roasted for your everyday ritual.">
+    <title>The Coffee Grove | From Estate to Cup</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;1,500;1,600&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="css/style.css">
-    
+    <script src="js/script.js" defer></script>
 </head>
+
 <body>
-<div class="announcement">SMALL-BATCH COFFEE · GROWN WITH PATIENCE · ROASTED WITH CARE</div>
-<header class="site-header" id="siteHeader">
-    <a class="brand" href="index.html" aria-label="The Coffee Grove home">
-        <span class="brand-symbol">G</span>
-        <span class="brand-text">
-            <strong>THE COFFEE GROVE</strong>
-            <small>ESTATE · WESTERN GHATS</small>
-        </span>
-    </a>
+    <div class="announcement-bar">
+        <span>SMALL-BATCH COFFEE</span>
+        <span class="announcement-dot">•</span>
+        <span>GROWN WITH PATIENCE</span>
+        <span class="announcement-dot">•</span>
+        <span>ROASTED WITH CARE</span>
+    </div>
 
-    <nav class="desktop-nav" aria-label="Primary navigation">
-        <a href="index.html">Home</a>
-        <a href="estate.html">Estate</a>
-        <a href="shop.html">Coffee</a>
-        <a href="gallery.html">Gallery</a>
-        <a href="contact.html">Visit</a>
-    </nav>
+    <header class="site-header">
+        <a class="brand" href="index.html" aria-label="The Coffee Grove homepage">
+            <span class="brand-symbol">cg.</span>
+            <span class="brand-copy">
+                <strong>THE COFFEE GROVE</strong>
+                <small>ESTATE COFFEE · WESTERN GHATS</small>
+            </span>
+        </a>
 
-    <div class="header-actions">
-        <button class="basket-button" type="button" data-cart-open>
-            Basket <span class="basket-count" data-cart-count>0</span>
+        <button class="menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false">
+            <span></span>
+            <span></span>
         </button>
-        <button class="menu-button" type="button" data-menu-open aria-label="Open menu">Menu</button>
-    </div>
-</header>
 
-<div class="mobile-menu" data-mobile-menu>
-    <div class="mobile-menu-top">
-        <span>MENU</span>
-        <button type="button" data-menu-close aria-label="Close menu">×</button>
-    </div>
-    <nav>
-        <a href="index.html">Home <span>01</span></a>
-        <a href="estate.html">Our Estate <span>02</span></a>
-        <a href="shop.html">Coffee Collection <span>03</span></a>
-        <a href="gallery.html">Gallery <span>04</span></a>
-        <a href="contact.html">Visit the Grove <span>05</span></a>
-    </nav>
-    <p>Good coffee begins with good land.</p>
-</div>
-
-<main>
-    <section class="hero" id="home">
-        <img class="hero-image" src="assets/coffee-bgg.jpg" alt="Green coffee estate across the Western Ghats">
-        <div class="hero-shade"></div>
-        <div class="hero-content reveal">
-            <p class="eyebrow light">A COFFEE ESTATE IN THE WESTERN GHATS</p>
-            <h1>The Coffee<br><em>Grove.</em></h1>
-            <p class="hero-copy">A story grown between misty mornings, old shade trees and carefully picked coffee cherries.</p>
-            <div class="hero-buttons">
-                <a class="button button-light" href="#story">Enter the Grove</a>
-                <a class="line-link light" href="shop.html">Explore coffee <span>→</span></a>
-            </div>
-        </div>
-        <div class="hero-bottom"><span>SHADE-GROWN</span><span>SMALL-BATCH</span><span>SINGLE-ESTATE</span></div>
-    </section>
-
-    <section class="editorial intro-section" id="story">
-        <div class="narrow-content reveal">
-            <p class="eyebrow">A SLOWER KIND OF COFFEE STORY</p>
-            <h2>Good coffee begins with <em>good land.</em></h2>
-            <p class="drop-cap">Here, coffee grows under a living canopy of fruit trees, flowers and monsoon greens. We care for the grove first, pick only what is ready and roast in small batches — keeping the character of the place in every cup.</p>
-            <a class="line-link" href="estate.html">Discover our estate <span>→</span></a>
-        </div>
-    </section>
-
-    <section class="split-story">
-        <div class="split-image reveal"><img src="assets/coffee-plant.jpg" alt="Coffee plants growing on a hillside"></div>
-        <div class="split-copy reveal">
-            <p class="eyebrow">OUR ESTATE</p>
-            <h2>Rooted in<br><em>the hills.</em></h2>
-            <p>The Grove is a living ecosystem. Coffee shares the shade with fruit, flowers, birds and old trees. That biodiversity is not decoration — it is part of how we grow better coffee.</p>
-            <div class="mini-stats">
-                <div><strong>1200m</strong><span>Growing altitude</span></div>
-                <div><strong>100%</strong><span>Hand selected</span></div>
-                <div><strong>Small</strong><span>Batch roasting</span></div>
-            </div>
-            <a class="line-link" href="estate.html">Walk through the estate <span>→</span></a>
-        </div>
-    </section>
-
-    <section class="specialities">
-        <div class="section-heading centered reveal">
-            <p class="eyebrow">FROM THE BAR</p>
-            <h2>Our <em>Specialities</em></h2>
-            <img src="assets/leaf-divider.svg" alt="" class="divider">
-        </div>
-        <div class="speciality-grid">
-            <div class="speciality-list reveal">
-                <span class="list-title">TO SIP FOR</span>
-                <button data-speciality="Filter Coffee">FILTER COFFEE</button>
-                <button data-speciality="Espresso">ESPRESSO</button>
-                <button data-speciality="Cold Brew">COLD BREW</button>
-                <button data-speciality="Cappuccino">CAPPUCCINO</button>
-                <button data-speciality="Signature Latte">SIGNATURE LATTE</button>
-            </div>
-            <div class="speciality-image reveal">
-                <img src="assets/speciality-coffee.jpg" alt="Fresh coffee served in a warm cup">
-                <div class="image-caption">THE HOUSE POUR<br><strong>ESTATE FILTER</strong></div>
-            </div>
-            <div class="speciality-list right reveal">
-                <span class="list-title">TO SAVOUR</span>
-                <button data-speciality="Estate Iced Coffee">ESTATE ICED COFFEE</button>
-                <button data-speciality="Honey Latte">HONEY LATTE</button>
-                <button data-speciality="Mocha">MOCHA</button>
-                <button data-speciality="Coffee Tonic">COFFEE TONIC</button>
-                <button data-speciality="Affogato">AFFOGATO</button>
-                <button data-speciality="Chocolate Mocha">CHOCOLATE MOCHA</button>
-            </div>
-        </div>
-    </section>
-
-    <section class="journey-section">
-        <div class="journey-intro reveal">
-            <p class="eyebrow">THE COFFEE JOURNEY</p>
-            <h2>From cherry<br>to <em>cup.</em></h2>
-            <p>Every stage is gentle. Every season leaves its own signature.</p>
-        </div>
-        <div class="journey-cards">
-            <article class="journey-card reveal"><span>01</span><img src="assets/coffee-cherries.jpg" alt="Coffee cherries on a branch"><h3>Grown & ripened</h3><p>Slowly beneath shade, until each cherry reaches its best sweetness.</p></article>
-            <article class="journey-card reveal"><span>02</span><img src="assets/coffee-harvest.jpg" alt="Coffee being harvested in the estate"><h3>Picked by hand</h3><p>Ripe fruit is selected carefully, one harvest at a time.</p></article>
-            <article class="journey-card reveal"><span>03</span><img src="assets/roasted-beans.jpg" alt="Coffee beans roasting"><h3>Roasted in small lots</h3><p>Roasting is tuned to reveal the natural character of the estate.</p></article>
-            <article class="journey-card reveal"><span>04</span><img src="assets/coffee-cup.jpg" alt="A cup of freshly brewed coffee"><h3>Poured for you</h3><p>Freshly packed beans become part of a slower morning ritual.</p></article>
-        </div>
-    </section>
-
-    <section class="collection-section">
-        <div class="section-heading reveal">
-            <div><p class="eyebrow">THE GROVE COLLECTION</p><h2>A little bit of the estate <em>to take home.</em></h2></div>
-            <a class="line-link" href="shop.html">View all coffee <span>→</span></a>
-        </div>
-        <div class="product-grid">
-            <article class="product-card reveal">
-                <div class="product-image"><img src="assets/coffee-beans.jpg" alt="Estate Roast coffee beans"></div>
-                <div class="product-info"><span>MEDIUM ROAST</span><h3>Estate Roast</h3><p>Cocoa · Caramel · Soft spice</p><div class="product-bottom"><strong>₹650</strong><button class="add-cart" data-id="estate-roast" data-name="Estate Roast" data-price="650" data-image="assets/coffee-beans.jpg">Add to basket</button></div></div>
-            </article>
-            <article class="product-card reveal">
-                <div class="product-image"><img src="assets/roasted-beans.jpg" alt="Forest Dark coffee beans"></div>
-                <div class="product-info"><span>DARK ROAST</span><h3>Forest Dark</h3><p>Dark chocolate · Spice · Walnut</p><div class="product-bottom"><strong>₹720</strong><button class="add-cart" data-id="forest-dark" data-name="Forest Dark" data-price="720" data-image="assets/roasted-beans.jpg">Add to basket</button></div></div>
-            </article>
-            <article class="product-card reveal">
-                <div class="product-image"><img src="assets/coffee-cherries.jpg" alt="Honey Process coffee story"></div>
-                <div class="product-info"><span>HONEY PROCESS</span><h3>Golden Honey</h3><p>Honeyed fruit · Citrus · Cane sugar</p><div class="product-bottom"><strong>₹790</strong><button class="add-cart" data-id="golden-honey" data-name="Golden Honey" data-price="790" data-image="assets/coffee-cherries.jpg">Add to basket</button></div></div>
-            </article>
-        </div>
-    </section>
-
-    <section class="experience-section">
-        <div class="experience-copy reveal">
-            <p class="eyebrow">COME SLOWLY</p>
-            <h2>Stay for<br><em>the morning.</em></h2>
-            <p>Walk between the coffee rows, listen for birds in the canopy, taste a fresh roast and let the hills set the pace. The Grove is more than a farm — it is an invitation to pause.</p>
-            <a class="button button-light" href="contact.html">Plan an estate visit</a>
-        </div>
-        <div class="experience-image reveal"><img src="assets/cafe-interior.jpg" alt="Warm coffee estate cafe interior"></div>
-    </section>
-
-    <section class="visit-strip">
-        <div class="visit-image reveal"><img src="assets/cold-coffee.jpg" alt="Cold coffee served at the grove"></div>
-        <div class="visit-copy reveal"><p class="eyebrow">THE GROVE IS WAITING</p><h2>Come for the coffee.<br><em>Stay for the story.</em></h2><p>Plan a slow morning, browse the collection or send us a note about wholesale and gifting.</p><a class="line-link" href="contact.html">Start a conversation <span>→</span></a></div>
-    </section>
-</main>
-<footer class="site-footer">
-    <div class="footer-main">
-        <div class="footer-brand">
-            <div class="brand-symbol">G</div>
-            <h2>The Coffee Grove</h2>
-            <p>A story grown in the Western Ghats.</p>
-        </div>
-        <div class="footer-column">
-            <span class="footer-label">Explore</span>
+        <nav class="main-nav" aria-label="Main navigation">
+            <a class="active" href="index.html">Home</a>
             <a href="estate.html">Our Estate</a>
-            <a href="shop.html">Coffee Collection</a>
-            <a href="gallery.html">Gallery</a>
-        </div>
-        <div class="footer-column">
-            <span class="footer-label">Visit</span>
-            <a href="contact.html">Plan a Visit</a>
-            <a href="contact.html">Wholesale</a>
-            <a href="contact.html">Get in touch</a>
-        </div>
-    </div>
-    <div class="footer-bottom">
-        <span>© <span class="year">2026</span> The Coffee Grove</span>
-        <span>Grown slowly · Shared generously</span>
-    </div>
-</footer>
+            <a href="shop.html">Coffee</a>
+            <a href="journal.html">Journal</a>
+            <a href="contact.html">Contact</a>
+        </nav>
 
-<aside class="cart-drawer" data-cart-drawer aria-label="Basket">
-    <div class="cart-head">
-        <div>
-            <span class="eyebrow">YOUR BASKET</span>
-            <h2>A little grove to take home.</h2>
-        </div>
-        <button type="button" data-cart-close aria-label="Close basket">×</button>
-    </div>
-    <div class="cart-items" data-cart-items>
-        <p class="empty-cart">Your basket is waiting for something freshly roasted.</p>
-    </div>
-    <div class="cart-foot">
-        <div class="cart-total-row"><span>Total</span><strong data-cart-total>₹0</strong></div>
-        <a class="button button-dark full" href="contact.html">Continue to enquiry</a>
-    </div>
-</aside>
-<div class="cart-overlay" data-cart-close></div>
-<div class="toast" data-toast></div>
+        <button class="bag-button" type="button" aria-label="Open shopping bag">
+            <span>Shopping bag</span>
+            <span class="bag-count">0</span>
+        </button>
+    </header>
 
-<script src="js/script.js"></script>
+    <main>
+        <section class="hero">
+            <img class="hero-image" src="assets/estate-landscape.jpg" alt="Coffee estate surrounded by the green hills of the Western Ghats">
+            <div class="hero-shade"></div>
+
+            <div class="hero-content reveal">
+                <p class="eyebrow eyebrow-light"><span class="eyebrow-rule"></span> COFFEE, WITH A SENSE OF PLACE</p>
+                <h1>Good coffee<br>starts <em>at the source.</em></h1>
+                <p class="hero-description">
+                    From the quiet hills of the Western Ghats to your daily ritual,
+                    discover coffee shaped by land, season and care.
+                </p>
+                <div class="hero-actions">
+                    <a class="button button-light" href="shop.html">Discover our coffee <span>↗</span></a>
+                    <a class="underlined-link link-light" href="estate.html">Meet the estate <span>→</span></a>
+                </div>
+            </div>
+
+            <div class="hero-caption hero-caption-left">
+                <span>01 / 03</span>
+                <span>THE LAND. THE HARVEST. THE CUP.</span>
+            </div>
+            <div class="hero-caption hero-caption-right">GROWN IN THE WESTERN GHATS, INDIA</div>
+            <span class="vertical-caption">ESTATE TO CUP — SINCE THE BEGINNING</span>
+        </section>
+
+
+<section class="intro-section section-shell">
+
+    <div class="section-index reveal">
+        <span class="index-number">01</span>
+        <span>OUR POINT OF VIEW</span>
+    </div>
+
+    <div class="intro-photo reveal">
+        <img
+            src="assets/coffeecup-hills.jpg"
+            alt="Ripe coffee cherries growing on a coffee plant"
+        >
+
+        <div class="intro-photo-caption">
+            <span>01 / THE ORIGIN</span>
+            <span>GROWN WITH CARE</span>
+        </div>
+    </div>
+
+    <div class="intro-heading reveal">
+        <p class="eyebrow">
+            A LITTLE MORE INTENTION IN EVERY CUP
+        </p>
+
+        <h2>
+            Not just coffee.<br>
+            <em>A place you can taste.</em>
+        </h2>
+    </div>
+
+    <div class="intro-description reveal">
+        <p>
+            Memorable coffee begins long before the first pour.
+            It begins with healthy soil, patient hands and a
+            respect for the land that makes every harvest its own.
+        </p>
+
+        <a
+            class="round-arrow"
+            href="estate.html"
+            aria-label="Discover our estate"
+        >↗</a>
+    </div>
+
+    <div class="intro-values reveal">
+
+        <div class="value-item">
+            <span>01</span>
+            <strong>Connected to our land</strong>
+            <p>
+                Origin is not a label. It is the beginning
+                of every flavour.
+            </p>
+        </div>
+
+        <div class="value-item">
+            <span>02</span>
+            <strong>Small-batch thinking</strong>
+            <p>
+                Careful choices, considered roasting and
+                no need to rush.
+            </p>
+        </div>
+
+        <div class="value-item">
+            <span>03</span>
+            <strong>Made for everyday rituals</strong>
+            <p>
+                Good coffee should make ordinary moments
+                feel special.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+
+        <section class="estate-section">
+            <div class="estate-photo reveal">
+                <img src="assets/estate-hills.jpg" alt="Panoramic green coffee estate in the hills">
+                <span class="image-note">THE PLACE BEHIND THE CUP</span>
+            </div>
+
+            <div class="estate-copy reveal">
+                <p class="eyebrow"><span class="eyebrow-rule"></span> ROOTED IN THE LAND</p>
+                <h2>Raised by<br>the hills.<br><em>Made with care.</em></h2>
+                <p>
+                    Every landscape has its own rhythm. Rain, shade, soil and season
+                    all play a part in the character of coffee. Our story begins by
+                    paying attention to those small details.
+                </p>
+                <a class="button button-dark" href="estate.html">Explore our estate <span>↗</span></a>
+                <span class="estate-number">01<span>/</span>03</span>
+            </div>
+        </section>
+
+        <section class="collection-section section-shell">
+            <div class="section-heading reveal">
+                <div>
+                    <p class="eyebrow">THE COFFEE COLLECTION</p>
+                    <h2>Find your everyday<br><em>favourite.</em></h2>
+                </div>
+                <a class="underlined-link" href="shop.html">Explore all coffee <span>→</span></a>
+            </div>
+
+            <div class="product-grid">
+                <article class="product-card reveal">
+                    <a class="product-image product-image-cream" href="shop.html" aria-label="View House Blend">
+                        <span class="product-label">THE EVERYDAY ONE</span>
+                        <img src="assets/coffee-product-cream.jpg" alt="House Blend coffee packaging">
+                    </a>
+                    <div class="product-information">
+                        <div>
+                            <h3>House Blend</h3>
+                            <p>Balanced · Chocolate · Caramel</p>
+                        </div>
+                        <span class="product-price">₹499</span>
+                    </div>
+                    <button class="add-to-bag" type="button" data-add-to-bag data-name="House Blend" data-price="499" data-image="assets/coffee-product-cream.jpg">
+                        Add to bag <span>+</span>
+                    </button>
+                </article>
+
+                <article class="product-card reveal">
+                    <a class="product-image product-image-sage" href="shop.html" aria-label="View Estate Medium Roast">
+                        <span class="product-label">SINGLE ORIGIN</span>
+                        <img src="assets/MEDIUM-ROAST.jpg" alt="Medium roast coffee">
+                    </a>
+                    <div class="product-information">
+                        <div>
+                            <h3>Estate Medium Roast</h3>
+                            <p>Sweet · Nutty · Smooth</p>
+                        </div>
+                        <span class="product-price">₹599</span>
+                    </div>
+                    <button class="add-to-bag" type="button" data-add-to-bag data-name="Estate Medium Roast" data-price="599" data-image="assets/MEDIUM-ROAST.jpg">
+                        Add to bag <span>+</span>
+                    </button>
+                </article>
+
+                <article class="product-card reveal">
+                    <a class="product-image product-image-tan" href="shop.html" aria-label="View Monsoon Dark">
+                        <span class="product-label">BOLD & DEEP</span>
+                        <img src="assets/organic-coffee.jpg" alt="Dark roast coffee">
+                    </a>
+                    <div class="product-information">
+                        <div>
+                            <h3>Monsoon Dark</h3>
+                            <p>Bold · Deep · Full-bodied</p>
+                        </div>
+                        <span class="product-price">₹549</span>
+                    </div>
+                    <button class="add-to-bag" type="button" data-add-to-bag data-name="Monsoon Dark" data-price="549" data-image="assets/coffee-product-dark.jpg">
+                        Add to bag <span>+</span>
+                    </button>
+                </article>
+            </div>
+
+            <p class="collection-note">THOUGHTFULLY SELECTED. CAREFULLY ROASTED. BEST ENJOYED YOUR WAY.</p>
+        </section>
+
+        <section class="journey-section">
+            <div class="journey-image reveal">
+                <img src="assets/coffee-harvest.jpg" alt="Coffee harvest taking place at the estate">
+            </div>
+            <div class="journey-content reveal">
+                <p class="eyebrow eyebrow-light">FROM BRANCH TO BREW</p>
+                <h2>Good things<br>take <em>their time.</em></h2>
+                <p>
+                    Growing, picking, processing and roasting each ask for a different
+                    kind of attention. We believe the best cup comes from respecting
+                    every part of the journey.
+                </p>
+                <a class="underlined-link link-light" href="journal.html">Follow the journey <span>→</span></a>
+
+                <div class="journey-steps">
+                    <div><span>01</span><strong>Grow</strong></div>
+                    <div><span>02</span><strong>Harvest</strong></div>
+                    <div><span>03</span><strong>Roast</strong></div>
+                    <div><span>04</span><strong>Enjoy</strong></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="craft-section section-shell">
+            <div class="craft-copy reveal">
+                <p class="eyebrow">THE SMALL DETAILS</p>
+                <h2>Crafted for<br><em>your daily pause.</em></h2>
+                <p>
+                    A quiet morning. A conversation that runs long. Five minutes to
+                    yourself. We make coffee for the moments that make a day yours.
+                </p>
+                <a class="button button-dark" href="shop.html">Choose your coffee <span>↗</span></a>
+            </div>
+            <div class="craft-photo reveal">
+                <img src="assets/arabic-coffee.jpg" alt="Freshly prepared coffee ready to enjoy">
+                <span class="image-note">A MOMENT WORTH SLOWING DOWN FOR</span>
+            </div>
+        </section>
+
+        <section class="closing-section reveal">
+            <p class="eyebrow">YOUR NEXT GOOD CUP</p>
+            <h2>Make room for<br><em>a slower ritual.</em></h2>
+            <a class="button button-dark" href="shop.html">Shop the collection <span>↗</span></a>
+            <span class="closing-seal">GROWN WITH CARE<br>SHARED WITH JOY</span>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-main">
+            <a class="brand brand-footer" href="index.html">
+                <span class="brand-symbol">cg.</span>
+                <span class="brand-copy">
+                    <strong>THE COFFEE GROVE</strong>
+                    <small>ESTATE COFFEE · WESTERN GHATS</small>
+                </span>
+            </a>
+            <p class="footer-thought">Good coffee begins<br>with good land.</p>
+            <div class="footer-links">
+                <a href="estate.html">Our estate</a>
+                <a href="shop.html">Coffee</a>
+                <a href="journal.html">Journal</a>
+                <a href="contact.html">Contact</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <span>© 2026 THE COFFEE GROVE</span>
+            <span>GROWN WITH PATIENCE. MADE TO BE SHARED.</span>
+            <a href="#top" data-back-to-top>BACK TO TOP ↑</a>
+        </div>
+    </footer>
+
+    <div class="toast-message" role="status" aria-live="polite"></div>
+
+    <div class="bag-overlay"></div>
+    <aside class="shopping-drawer" aria-label="Shopping bag" aria-hidden="true">
+        <div class="drawer-header">
+            <div>
+                <p class="eyebrow">YOUR SELECTION</p>
+                <h2>Your bag <span class="drawer-count">0</span></h2>
+            </div>
+            <button class="drawer-close" type="button" aria-label="Close shopping bag">×</button>
+        </div>
+        <div class="drawer-items">
+            <p class="empty-bag">Your bag is waiting for something good.</p>
+        </div>
+        <div class="drawer-total">
+            <span>Subtotal</span>
+            <strong>₹<span class="subtotal-value">0</span></strong>
+        </div>
+        <button class="button button-dark checkout-button" type="button">Continue to checkout</button>
+        <p class="drawer-note">Demo shopping bag. A payment service is required for real orders.</p>
+    </aside>
 </body>
 </html>

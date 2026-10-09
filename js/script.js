@@ -1,305 +1,338 @@
+/* =========================================================
+   THE COFFEE GROVE
+   Navigation, scroll reveal and shopping bag interactions
+   ========================================================= */
 
-const cartKey = "coffeeGroveFinalCart";
-let cart = JSON.parse(localStorage.getItem(cartKey) || "[]");
+const menuToggle = document.querySelector(".menu-toggle");
+const mainNavigation = document.querySelector(".main-nav");
 
-const $ = (selector, parent = document) => parent.querySelector(selector);
-const $$ = (selector, parent = document) => Array.from(parent.querySelectorAll(selector));
+if (menuToggle && mainNavigation) {
+    menuToggle.addEventListener("click", function () {
+        const isOpen = mainNavigation.classList.toggle("open");
 
-function saveCart() {
-    localStorage.setItem(cartKey, JSON.stringify(cart));
-    updateCartCount();
-    renderCart();
+        menuToggle.setAttribute("aria-expanded", String(isOpen));
+        menuToggle.setAttribute(
+            "aria-label",
+            isOpen ? "Close navigation" : "Open navigation"
+        );
+    });
+
+    mainNavigation.querySelectorAll("a").forEach(function (link) {
+        link.addEventListener("click", function () {
+            mainNavigation.classList.remove("open");
+            menuToggle.setAttribute("aria-expanded", "false");
+        });
+    });
+
+    document.addEventListener("click", function (event) {
+        const clickedInsideHeader = event.target.closest(".site-header");
+
+        if (!clickedInsideHeader) {
+            mainNavigation.classList.remove("open");
+            menuToggle.setAttribute("aria-expanded", "false");
+        }
+    });
 }
 
-function updateCartCount() {
-    const count = cart.reduce((total, item) => total + item.qty, 0);
-    $$('[data-cart-count]').forEach((element) => {
-        element.textContent = count;
+/* Reveal page content as it enters the viewport. */
+
+const revealElements = document.querySelectorAll(".reveal");
+
+if ("IntersectionObserver" in window) {
+    const revealObserver = new IntersectionObserver(
+        function (entries, observer) {
+            entries.forEach(function (entry) {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("visible");
+                    observer.unobserve(entry.target);
+                }
+            });
+        },
+        {
+            threshold: 0.12
+        }
+    );
+
+    revealElements.forEach(function (element) {
+        revealObserver.observe(element);
     });
+} else {
+    revealElements.forEach(function (element) {
+        element.classList.add("visible");
+    });
+}
+
+/* Shopping bag state is stored in the browser. */
+
+const CART_STORAGE_KEY = "coffeeGroveProfessionalCart";
+
+const bagButton = document.querySelector(".bag-button");
+const shoppingDrawer = document.querySelector(".shopping-drawer");
+const bagOverlay = document.querySelector(".bag-overlay");
+const drawerClose = document.querySelector(".drawer-close");
+const drawerItems = document.querySelector(".drawer-items");
+const toastMessage = document.querySelector(".toast-message");
+
+let shoppingBag = [];
+
+try {
+    shoppingBag = JSON.parse(
+        localStorage.getItem(CART_STORAGE_KEY) || "[]"
+    );
+} catch (error) {
+    shoppingBag = [];
+}
+
+function saveShoppingBag() {
+    try {
+        localStorage.setItem(
+            CART_STORAGE_KEY,
+            JSON.stringify(shoppingBag)
+        );
+    } catch (error) {
+        /* The bag still works for the current page if storage is blocked. */
+    }
+
+    renderShoppingBag();
 }
 
 function showToast(message) {
-    const toast = $('[data-toast]');
-
-    if (!toast) {
+    if (!toastMessage) {
         return;
     }
 
-    toast.textContent = message;
-    toast.classList.add('show');
+    toastMessage.textContent = message;
+    toastMessage.classList.add("show");
 
-    window.clearTimeout(showToast.timer);
-    showToast.timer = window.setTimeout(() => {
-        toast.classList.remove('show');
-    }, 2200);
+    window.clearTimeout(showToast.timeoutId);
+
+    showToast.timeoutId = window.setTimeout(function () {
+        toastMessage.classList.remove("show");
+    }, 2400);
 }
 
-function openCart() {
-    $('[data-cart-drawer]')?.classList.add('open');
-    $('.cart-overlay')?.classList.add('open');
-    document.body.classList.add('cart-open');
-}
-
-function closeCart() {
-    $('[data-cart-drawer]')?.classList.remove('open');
-    $('.cart-overlay')?.classList.remove('open');
-    document.body.classList.remove('cart-open');
-}
-
-function openMenu() {
-    $('[data-mobile-menu]')?.classList.add('open');
-    document.body.classList.add('menu-open');
-}
-
-function closeMenu() {
-    $('[data-mobile-menu]')?.classList.remove('open');
-    document.body.classList.remove('menu-open');
-}
-
-function addToCart(button) {
-    const product = {
-        id: button.dataset.id,
-        name: button.dataset.name,
-        price: Number(button.dataset.price),
-        image: button.dataset.image,
-        qty: 1
-    };
-
-    const existing = cart.find((item) => item.id === product.id);
-
-    if (existing) {
-        existing.qty += 1;
-    } else {
-        cart.push(product);
-    }
-
-    saveCart();
-    openCart();
-    showToast(`${product.name} added to your basket.`);
-}
-
-function changeQuantity(id, change) {
-    const item = cart.find((product) => product.id === id);
-
-    if (!item) {
+function openShoppingBag() {
+    if (!shoppingDrawer || !bagOverlay) {
         return;
     }
 
-    item.qty += change;
+    shoppingDrawer.classList.add("open");
+    bagOverlay.classList.add("open");
+    shoppingDrawer.setAttribute("aria-hidden", "false");
+    document.body.classList.add("drawer-open");
 
-    if (item.qty <= 0) {
-        cart = cart.filter((product) => product.id !== id);
+    if (drawerClose) {
+        drawerClose.focus();
     }
-
-    saveCart();
 }
 
-function removeFromCart(id) {
-    cart = cart.filter((item) => item.id !== id);
-    saveCart();
-}
-
-function renderCart() {
-    const container = $('[data-cart-items]');
-    const totalElement = $('[data-cart-total]');
-
-    if (!container || !totalElement) {
+function closeShoppingBag() {
+    if (!shoppingDrawer || !bagOverlay) {
         return;
     }
 
-    if (!cart.length) {
-        container.innerHTML = '<p class="empty-cart">Your basket is waiting for something freshly roasted.</p>';
-        totalElement.textContent = '₹0';
+    shoppingDrawer.classList.remove("open");
+    bagOverlay.classList.remove("open");
+    shoppingDrawer.setAttribute("aria-hidden", "true");
+    document.body.classList.remove("drawer-open");
+}
+
+function renderShoppingBag() {
+    if (!drawerItems) {
         return;
     }
 
-    container.innerHTML = cart.map((item) => `
-        <div class="cart-item">
-            <img src="${item.image}" alt="${item.name}">
-            <div>
-                <h4>${item.name}</h4>
-                <p>₹${item.price.toLocaleString('en-IN')}</p>
-                <div class="qty-controls">
-                    <button type="button" data-minus="${item.id}">−</button>
-                    <span>${item.qty}</span>
-                    <button type="button" data-plus="${item.id}">+</button>
+    const itemCount = shoppingBag.reduce(function (total, item) {
+        return total + item.quantity;
+    }, 0);
+
+    const subtotal = shoppingBag.reduce(function (total, item) {
+        return total + item.price * item.quantity;
+    }, 0);
+
+    const bagCount = document.querySelector(".bag-count");
+    const drawerCount = document.querySelector(".drawer-count");
+    const subtotalValue = document.querySelector(".subtotal-value");
+
+    if (bagCount) {
+        bagCount.textContent = itemCount;
+    }
+
+    if (drawerCount) {
+        drawerCount.textContent = itemCount;
+    }
+
+    if (subtotalValue) {
+        subtotalValue.textContent = subtotal.toLocaleString("en-IN");
+    }
+
+    if (shoppingBag.length === 0) {
+        drawerItems.innerHTML = `
+            <p class="empty-bag">
+                Your bag is waiting for something good.
+            </p>
+        `;
+
+        return;
+    }
+
+    drawerItems.innerHTML = shoppingBag.map(function (item) {
+        return `
+            <article class="drawer-item">
+                <img src="${item.image}" alt="${item.name}">
+                <div>
+                    <h3>${item.name}</h3>
+                    <p>₹${item.price.toLocaleString("en-IN")}</p>
+                    <div class="quantity-controls">
+                        <button
+                            type="button"
+                            data-quantity-id="${item.id}"
+                            data-quantity-change="-1"
+                            aria-label="Decrease ${item.name} quantity"
+                        >−</button>
+                        <span>${item.quantity}</span>
+                        <button
+                            type="button"
+                            data-quantity-id="${item.id}"
+                            data-quantity-change="1"
+                            aria-label="Increase ${item.name} quantity"
+                        >+</button>
+                    </div>
                 </div>
-            </div>
-            <button type="button" data-remove="${item.id}">Remove</button>
-        </div>
-    `).join('');
-
-    const total = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
-    totalElement.textContent = `₹${total.toLocaleString('en-IN')}`;
+                <button
+                    class="remove-item"
+                    type="button"
+                    data-remove-id="${item.id}"
+                >Remove</button>
+            </article>
+        `;
+    }).join("");
 }
 
-function initReveal() {
-    const elements = $$('.reveal');
+function addToBag(button) {
+    const productName = button.dataset.name;
+    const productPrice = Number(button.dataset.price);
+    const productImage = button.dataset.image;
 
-    if (!('IntersectionObserver' in window)) {
-        elements.forEach((element) => element.classList.add('visible'));
-        return;
+    const productId = productName
+        .toLowerCase()
+        .replace(/[^a-z0-9]+/g, "-");
+
+    const existingProduct = shoppingBag.find(function (item) {
+        return item.id === productId;
+    });
+
+    if (existingProduct) {
+        existingProduct.quantity += 1;
+    } else {
+        shoppingBag.push({
+            id: productId,
+            name: productName,
+            price: productPrice,
+            image: productImage,
+            quantity: 1
+        });
     }
 
-    const observer = new IntersectionObserver((entries, currentObserver) => {
-        entries.forEach((entry) => {
-            if (!entry.isIntersecting) {
-                return;
-            }
-
-            entry.target.classList.add('visible');
-            currentObserver.unobserve(entry.target);
-        });
-    }, { threshold: 0.12 });
-
-    elements.forEach((element) => observer.observe(element));
+    saveShoppingBag();
+    openShoppingBag();
+    showToast(productName + " added to your bag.");
 }
 
-function initFilters() {
-    const filters = $$('.filter');
-    const cards = $$('.shop-grid .product-card');
+document.querySelectorAll("[data-add-to-bag]").forEach(function (button) {
+    button.addEventListener("click", function () {
+        addToBag(button);
+    });
+});
 
-    filters.forEach((filter) => {
-        filter.addEventListener('click', () => {
-            filters.forEach((button) => button.classList.remove('active'));
-            filter.classList.add('active');
+if (bagButton) {
+    bagButton.addEventListener("click", openShoppingBag);
+}
 
-            const value = filter.dataset.filter;
+if (drawerClose) {
+    drawerClose.addEventListener("click", closeShoppingBag);
+}
 
-            cards.forEach((card) => {
-                const show = value === 'all' || card.dataset.category === value;
-                card.classList.toggle('is-hidden', !show);
+if (bagOverlay) {
+    bagOverlay.addEventListener("click", closeShoppingBag);
+}
+
+if (drawerItems) {
+    drawerItems.addEventListener("click", function (event) {
+        const quantityButton = event.target.closest("[data-quantity-id]");
+        const removeButton = event.target.closest("[data-remove-id]");
+
+        if (quantityButton) {
+            const productId = quantityButton.dataset.quantityId;
+            const quantityChange = Number(
+                quantityButton.dataset.quantityChange
+            );
+
+            const product = shoppingBag.find(function (item) {
+                return item.id === productId;
             });
-        });
-    });
-}
 
-function initGallery() {
-    const lightbox = $('[data-lightbox]');
-    const lightboxImage = $('[data-lightbox-image]');
+            if (product) {
+                product.quantity += quantityChange;
 
-    if (!lightbox || !lightboxImage) {
-        return;
-    }
+                if (product.quantity <= 0) {
+                    shoppingBag = shoppingBag.filter(function (item) {
+                        return item.id !== productId;
+                    });
+                }
 
-    $$('.gallery-item img').forEach((image) => {
-        image.addEventListener('click', () => {
-            lightboxImage.src = image.src;
-            lightboxImage.alt = image.alt;
-            lightbox.classList.add('open');
-        });
-    });
+                saveShoppingBag();
+            }
+        }
 
-    const close = () => lightbox.classList.remove('open');
+        if (removeButton) {
+            const productId = removeButton.dataset.removeId;
 
-    $('[data-lightbox-close]')?.addEventListener('click', close);
-    lightbox.addEventListener('click', (event) => {
-        if (event.target === lightbox) {
-            close();
+            shoppingBag = shoppingBag.filter(function (item) {
+                return item.id !== productId;
+            });
+
+            saveShoppingBag();
         }
     });
 }
 
-function initContactForm() {
-    const form = $('#contactForm');
-    const message = $('#formMessage');
-
-    if (!form || !message) {
-        return;
+document.addEventListener("keydown", function (event) {
+    if (event.key === "Escape") {
+        closeShoppingBag();
     }
+});
 
-    form.addEventListener('submit', (event) => {
-        event.preventDefault();
+const checkoutButton = document.querySelector(".checkout-button");
 
-        const name = $('#name')?.value.trim();
-
-        if (!name) {
-            message.textContent = 'Please enter your name.';
+if (checkoutButton) {
+    checkoutButton.addEventListener("click", function () {
+        if (shoppingBag.length === 0) {
+            showToast("Your shopping bag is empty.");
             return;
         }
 
-        message.textContent = `Thank you, ${name}. Your enquiry is ready to send.`;
-        form.reset();
-        showToast('Enquiry form submitted successfully.');
+        showToast(
+            "Demo checkout only. Connect a payment service to accept orders."
+        );
     });
 }
 
-function initSpecialities() {
-    $$('[data-speciality]').forEach((button) => {
-        button.addEventListener('click', () => {
-            showToast(`${button.dataset.speciality} selected.`);
+/* Smoothly return to the top of the current page. */
+
+const backToTop = document.querySelector("[data-back-to-top]");
+
+if (backToTop) {
+    backToTop.addEventListener("click", function (event) {
+        event.preventDefault();
+
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
         });
     });
 }
 
-function initHeader() {
-    const header = $('#siteHeader');
+/* Initial render restores any bag items saved in localStorage. */
 
-    if (!header) {
-        return;
-    }
-
-    const update = () => {
-        header.classList.toggle('scrolled', window.scrollY > 60);
-    };
-
-    update();
-    window.addEventListener('scroll', update, { passive: true });
-}
-
-document.addEventListener('DOMContentLoaded', () => {
-    updateCartCount();
-    renderCart();
-    initReveal();
-    initFilters();
-    initGallery();
-    initContactForm();
-    initSpecialities();
-    initHeader();
-
-    $$('[data-cart-open]').forEach((button) => {
-        button.addEventListener('click', openCart);
-    });
-
-    $$('[data-cart-close]').forEach((button) => {
-        button.addEventListener('click', closeCart);
-    });
-
-    $$('[data-menu-open]').forEach((button) => {
-        button.addEventListener('click', openMenu);
-    });
-
-    $$('[data-menu-close]').forEach((button) => {
-        button.addEventListener('click', closeMenu);
-    });
-
-    $$('[data-mobile-menu] a').forEach((link) => {
-        link.addEventListener('click', closeMenu);
-    });
-
-    $$('.add-cart').forEach((button) => {
-        button.addEventListener('click', () => addToCart(button));
-    });
-
-    document.addEventListener('click', (event) => {
-        const plus = event.target.closest('[data-plus]');
-        const minus = event.target.closest('[data-minus]');
-        const remove = event.target.closest('[data-remove]');
-
-        if (plus) {
-            changeQuantity(plus.dataset.plus, 1);
-        }
-
-        if (minus) {
-            changeQuantity(minus.dataset.minus, -1);
-        }
-
-        if (remove) {
-            removeFromCart(remove.dataset.remove);
-        }
-    });
-
-    $$('.year').forEach((element) => {
-        element.textContent = new Date().getFullYear();
-    });
-});
+renderShoppingBag();
