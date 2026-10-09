@@ -1928,3 +1928,59 @@ button {
 .intro-section .intro-values {
     transform: none;
 }
+
+/* ===== Coffee Grove Estate Animations ===== */
+
+/* Image hover zoom */
+.estate img,
+.estate-card img,
+.process-card img {
+  transition:
+    transform 0.8s cubic-bezier(0.2, 0.7, 0.2, 1),
+    filter 0.8s ease;
+}
+
+.estate img:hover,
+.estate-card img:hover,
+.process-card img:hover {
+  transform: scale(1.04);
+  filter: brightness(1.05);
+}
+
+/* Scroll reveal */
+.reveal {
+  opacity: 0;
+  transform: translateY(35px);
+  transition:
+    opacity 0.8s ease,
+    transform 0.8s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Staggered content */
+.reveal:nth-child(2) {
+  transition-delay: 0.15s;
+}
+
+.reveal:nth-child(3) {
+  transition-delay: 0.3s;
+}
+
+/* Respect reduced-motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .reveal,
+  .estate img,
+  .estate-card img,
+  .process-card img {
+    transition: none;
+    transform: none;
+  }
+
+  .reveal {
+    opacity: 1;
+  }
+}
