@@ -2154,3 +2154,195 @@ button {
 .form-status-visible { padding: 12px 14px; background: #e8e9df; color: #354331; line-height: 1.6; animation: status-in .35s ease both; }
 @keyframes status-in { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
 @media (prefers-reduced-motion: reduce) { .form-status-visible { animation: none; } }
+```css
+/* =========================================
+   MOBILE RESPONSIVE SPACING FIX
+   The Coffee Grove
+   ========================================= */
+
+@media screen and (max-width: 600px) {
+
+    /* Keep all sections away from screen edges */
+    .section-shell {
+        padding-left: 22px !important;
+        padding-right: 22px !important;
+        box-sizing: border-box;
+    }
+
+    /* Prevent content from touching the edges */
+    .estate-content,
+    .estate-card,
+    .process-card,
+    .intro-section,
+    .intro-content,
+    .journal-card,
+    .journal-content,
+    .contact-content,
+    .contact-form,
+    .contact-details,
+    .contact-info {
+        box-sizing: border-box;
+        max-width: 100%;
+    }
+
+    /* Improve text spacing and readability */
+    .estate-content,
+    .estate-card,
+    .process-card,
+    .intro-section,
+    .intro-content,
+    .journal-card,
+    .journal-content,
+    .contact-content,
+    .contact-form,
+    .contact-details,
+    .contact-info {
+        padding-left: 18px;
+        padding-right: 18px;
+    }
+
+    /* Prevent oversized headings */
+    h1,
+    h2,
+    h3 {
+        overflow-wrap: break-word;
+    }
+
+    /* Keep images inside their containers */
+    img {
+        max-width: 100%;
+    }
+
+    /* Add breathing room around quotations */
+    blockquote {
+        margin-left: 0;
+        margin-right: 0;
+        padding-left: 18px;
+        padding-right: 18px;
+        box-sizing: border-box;
+    }
+
+    /* Give contact form fields comfortable spacing */
+    input,
+    textarea,
+    select {
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+}
+/* ==========================================
+   THE COFFEE GROVE
+   FIX EDGE SPACING ON 3 MOBILE SECTIONS
+   ========================================== */
+
+@media screen and (max-width: 760px) {
+
+    /* ESTATE PAGE */
+    .estate-season-section {
+
+        width: auto !important;
+
+        margin: 55px 22px 24px !important;
+
+        padding: 0 !important;
+
+        grid-template-columns: minmax(0, 1fr) !important;
+
+        gap: 26px !important;
+
+        box-sizing: border-box;
+
+    }
+
+    /* JOURNAL PAGE */
+    .journal-feature-section {
+
+        width: auto !important;
+
+        margin: 55px 22px 24px !important;
+
+        padding: 0 !important;
+
+        grid-template-columns: minmax(0, 1fr) !important;
+
+        gap: 26px !important;
+
+        box-sizing: border-box;
+
+    }
+
+    /* CONTACT PAGE */
+    .contact-community-section {
+
+        width: auto !important;
+
+        margin: 55px 22px 24px !important;
+
+        padding: 0 !important;
+
+        grid-template-columns: minmax(0, 1fr) !important;
+
+        gap: 26px !important;
+
+        box-sizing: border-box;
+
+    }
+
+    /* Stop grid content from overflowing */
+    .estate-season-section > *,
+    .journal-feature-section > *,
+    .contact-community-section > * {
+
+        min-width: 0;
+
+        max-width: 100%;
+
+        box-sizing: border-box;
+
+    }
+
+    /* Keep the original images, but fit them neatly */
+    .estate-season-image,
+    .journal-feature-image {
+
+        width: 100%;
+
+        min-width: 0;
+
+        min-height: 250px;
+
+        overflow: hidden;
+
+    }
+
+    .estate-season-image img,
+    .journal-feature-image img {
+
+        display: block;
+
+        width: 100%;
+
+        max-width: 100%;
+
+        min-height: 250px;
+
+        object-fit: cover;
+
+    }
+
+    /* Keep the Contact quotation inside its section */
+    .contact-quote-card {
+
+        min-width: 0;
+
+        max-width: 100%;
+
+        padding: 24px;
+
+        box-sizing: border-box;
+
+        overflow-wrap: break-word;
+
+    }
+
+}
