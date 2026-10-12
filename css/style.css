@@ -2346,3 +2346,101 @@ button {
     }
 
 }
+/* =========================================
+   COFFEE GROVE - FINAL LAPTOP LAYOUT FIX
+   Estate, Journal and Contact sections
+   ========================================= */
+
+@media screen and (min-width: 761px) {
+
+    .estate-season-section,
+    .journal-feature-section,
+    .contact-community-section {
+        width: 88% !important;
+        max-width: 1240px !important;
+
+        margin: 75px auto 35px !important;
+        padding: 0 !important;
+
+        display: grid !important;
+        grid-template-columns: minmax(0, 0.9fr)
+                               minmax(0, 1.1fr) !important;
+
+        align-items: center !important;
+        gap: 0 !important;
+
+        box-sizing: border-box;
+        overflow: hidden;
+    }
+
+    /* Smaller, balanced images */
+    .estate-season-image,
+    .journal-feature-image {
+        width: 100% !important;
+        height: 440px !important;
+        min-height: 0 !important;
+        overflow: hidden;
+    }
+
+    .estate-season-image img,
+    .journal-feature-image img {
+        display: block;
+        width: 100% !important;
+        height: 100% !important;
+        min-height: 0 !important;
+        object-fit: cover;
+        object-position: center;
+    }
+
+    /* Center text vertically and add breathing space */
+    .estate-season-copy,
+    .journal-feature-copy,
+    .contact-community-copy {
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+
+        padding: 38px clamp(25px, 3vw, 46px) !important;
+        margin: 0 !important;
+
+        box-sizing: border-box;
+    }
+
+    /* Keep the contact quotation proportional */
+    .contact-quote-card {
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+
+        padding: clamp(28px, 3vw, 42px) !important;
+        margin: 0 !important;
+
+        box-sizing: border-box;
+    }
+
+    .contact-quote-card blockquote {
+        font-size: clamp(24px, 2.1vw, 34px);
+        line-height: 1.5;
+    }
+}
+
+/* Medium laptop screens */
+@media screen and (min-width: 761px) and (max-width: 1100px) {
+
+    .estate-season-section,
+    .journal-feature-section,
+    .contact-community-section {
+        width: 92% !important;
+    }
+
+    .estate-season-image,
+    .journal-feature-image {
+        height: 380px !important;
+    }
+
+    .estate-season-copy,
+    .journal-feature-copy,
+    .contact-community-copy {
+        padding: 26px !important;
+    }
+}
