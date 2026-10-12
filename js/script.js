@@ -336,3 +336,31 @@ if (backToTop) {
 /* Initial render restores any bag items saved in localStorage. */
 
 renderShoppingBag();
+
+
+/* Gentle polish: stagger reveal timing, header feedback and contact form response. */
+document.querySelectorAll(".reveal").forEach(function (element, index) {
+    element.style.setProperty("--reveal-delay", Math.min(index % 4, 3) * 85 + "ms");
+});
+
+const siteHeader = document.querySelector(".site-header");
+function updateHeaderOnScroll() {
+    if (siteHeader) {
+        siteHeader.classList.toggle("header-scrolled", window.scrollY > 24);
+    }
+}
+window.addEventListener("scroll", updateHeaderOnScroll, { passive: true });
+updateHeaderOnScroll();
+
+const contactForm = document.querySelector(".contact-form");
+if (contactForm) {
+    contactForm.addEventListener("submit", function (event) {
+        event.preventDefault();
+        const status = contactForm.querySelector(".form-status");
+        if (status) {
+            status.textContent = "Thank you for reaching out. This demo form is ready to connect to an email service.";
+            status.classList.add("form-status-visible");
+        }
+        contactForm.reset();
+    });
+}

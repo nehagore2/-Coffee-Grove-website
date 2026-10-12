@@ -100,7 +100,50 @@
                     <p>Careful roasting honours the qualities built into the bean from the beginning.</p>
                 </article>
             </div>
+
+            <section class="estate-notes reveal" aria-labelledby="estate-notes-title">
+                <p class="eyebrow">FROM SOIL TO SIP</p>
+                <h2 id="estate-notes-title">Good coffee is never<br><em>just a bean.</em></h2>
+                <p class="estate-notes-intro">
+                    It is a chain of small, thoughtful choices — nurturing the plants,
+                    picking cherries at their best, and roasting slowly enough to let
+                    their natural character shine through.
+                </p>
+                <div class="estate-values">
+                    <article class="estate-value">
+                        <span>01</span>
+                        <h3>Care for the land</h3>
+                        <p>Healthy soil and considered growing practices give every harvest a stronger beginning.</p>
+                    </article>
+                    <article class="estate-value">
+                        <span>02</span>
+                        <h3>Respect the season</h3>
+                        <p>We believe patience matters, from the first ripe cherry to the final roast profile.</p>
+                    </article>
+                    <article class="estate-value">
+                        <span>03</span>
+                        <h3>Make every cup count</h3>
+                        <p>Our aim is a cup that feels balanced, memorable, and worth slowing down for.</p>
+                    </article>
+                </div>
+                <a class="button button-dark" href="shop.html">Explore our coffee <span>↗</span></a>
+            </section>
         </section>
+
+
+            <section class="story-note-band reveal">
+                <span class="story-note-mark">“</span>
+                <p>Great coffee is a record of its place — the weather, the soil, the season and the people who give it their attention.</p>
+                <span class="eyebrow">A PHILOSOPHY ROOTED IN THE WESTERN GHATS</span>
+            </section>
+            <section class="estate-season-section">
+                <div class="estate-season-copy reveal"><p class="eyebrow">A SEASONAL PRACTICE</p><h2>Follow the rhythm<br><em>of the grove.</em></h2><p>Each stage asks for something different: steady care while plants grow, a careful eye when cherries ripen, and a patient hand when flavour is brought forward through roasting.</p><a class="underlined-link" href="journal.html">Read our field notes <span>→</span></a></div>
+                <div class="estate-season-image reveal"><img src="assets/coffee-farmers.jpg" alt="People carefully working during the coffee season"><div class="estate-image-caption">CARE IS FOUND IN THE DETAILS</div></div>
+            </section>
+            <section class="community-section estate-community">
+                <div class="community-heading reveal"><p class="eyebrow">A CUP WITH A SENSE OF PLACE</p><h2>More than a flavour.<br><em>A feeling that stays.</em></h2><p>We want every cup to bring you a little closer to the landscape and care behind it.</p></div>
+                <div class="review-grid review-grid-two"><article class="review-card reveal"><span class="review-stars">✦ ✦ ✦</span><p>“Knowing how much care goes into the journey makes that first sip feel special.”</p><div class="review-person"><span class="review-avatar">G</span><div><strong>A grove-side thought</strong><small>Land, patience, and care</small></div></div></article><article class="review-card reveal"><span class="review-stars">✦ ✦ ✦</span><p>“The best part of coffee is the story you get to share around it.”</p><div class="review-person"><span class="review-avatar">C</span><div><strong>A coffee-table thought</strong><small>Made to be shared</small></div></div></article></div>
+            </section>
 
     </main>
 
@@ -150,32 +193,5 @@
         <p class="drawer-note">Demo shopping bag. A payment service is required for real orders.</p>
     </aside>
     
-/* Coffee Grove scroll reveal */
-const revealElements = document.querySelectorAll(
-  ".estate-card, .process-card, .estate-content"
-);
-
-revealElements.forEach((element) => {
-  element.classList.add("reveal");
-});
-
-const revealObserver = new IntersectionObserver(
-  (entries, observer) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("visible");
-        observer.unobserve(entry.target);
-      }
-    });
-  },
-  {
-    threshold: 0.15
-  }
-);
-
-revealElements.forEach((element) => {
-  revealObserver.observe(element);
-});
-
 </body>
 </html>
